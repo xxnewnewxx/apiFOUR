@@ -2,9 +2,9 @@ const API_KEY = `29a96ef9b757480189bbd02b34691b57`;
 let articles = [];
 let page = 1;
 let totalPage = 1;
-const PAGE_SIZE = 8;
+const pageSize = 8;
 let url = new URL(
-  `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}`
+  `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&pageSize=${pageSize} `
 );
 let menus = document.querySelectorAll("#menu-list button");
 menus.forEach((menu) =>
@@ -27,7 +27,7 @@ const getNews = async () => {
       }
 
       articles = data.articles;
-      totalPage = Math.ceil(data.totalResults / PAGE_SIZE);
+      totalPage = Math.ceil(data.totalResults / pageSize);
       render();
       renderPagination();
     } else {
@@ -45,13 +45,40 @@ const getNews = async () => {
 };
 
 //
+const getLatestNews = () => {
+  page = 1;
+  url = new URL(
+    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&pageSize=${pageSize}`
+  );
+  getNews();
+};
+
+const getNewsByTopic = (event) => {
+  const topic = event.target.textContent.toLowerCase();
+
+  page = 1;
+  url = new URL(
+    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&pageSize=${pageSize}&category=${topic}`
+  );
+  getNews();
+};
+
+const openSearchBox = () => {
+  let inputArea = document.getElementById("input-area");
+  if (inputArea.style.display === "inline") {
+    inputArea.style.display = "none";
+  } else {
+    inputArea.style.display = "inline";
+  }
+};
+//
 
 const getNewsByKeyword = () => {
   const keyword = document.getElementById("search-input").value;
 
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}&q=${keyword}`
+    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&pageSize=${pageSize}&q=${keyword}`
   );
   getNews();
 };
