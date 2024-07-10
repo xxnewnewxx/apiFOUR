@@ -96,7 +96,7 @@ const render = () => {
         <div class="col-lg-4">
             <img class="news-img"
                 src="${news.urlToImage}" 
-                onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU'; this.onerror=null;" />
+                onerror="this.src='https://media.istockphoto.com/id/1399859917/pt/vetorial/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?s=612x612&w=0&k=20&c=sLIG7ZNWBtvCM1o_Po0X9Y3UUu0KajdLvrKlrsLlrk8='; this.onerror=null;" />
         </div>
         <div class="col-lg-8">
             <a class="title" target="_blank" href="${news.url}">${
