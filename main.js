@@ -104,7 +104,7 @@ const render = () => {
       }</a>
             <p>${
               news.description == null || news.description == ""
-                ? "내용없음"
+                ? "내용이 없습니다"
                 : news.description.length > 200
                 ? news.description.substring(0, 200) + "..."
                 : news.description
@@ -118,6 +118,14 @@ const render = () => {
     .join("");
 
   document.getElementById("news-board").innerHTML = resultHTML;
+};
+
+const openNav = () => {
+  document.getElementById("noonaSidenav").style.width = "250px";
+};
+
+const closeNav = () => {
+  document.getElementById("noonaSidenav").style.width = "0";
 };
 
 getLatestNews();
